@@ -1,0 +1,25 @@
+{
+  "name": "ilm-basic",
+  "version": "1.0.0",
+  "description": "basic ilm microservice federation",
+  "main": "index.js",
+  "scripts": {
+    "start-gateway": "nodemon gateway.js",
+    "start-service-users": "nodemon services/users/index.js",
+    "start-service-posts": "nodemon services/posts/index.js",
+    "start-services": "concurrently \"npm:start-service-*\"",
+    "postinstall": "lerna bootstrap"
+  },
+  "author": "jelkand",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.0.0",
+    "lerna": "^3.18.1",
+    "nodemon": "^1.19.4"
+  },
+  "dependencies": {
+    "@apollo/gateway": "^0.10.7",
+    "apollo-server": "^2.9.6",
+    "graphql": "^14.5.8"
+  }
+}
