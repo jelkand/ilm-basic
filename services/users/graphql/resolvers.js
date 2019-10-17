@@ -1,7 +1,7 @@
 const resolvers = {
   Query: {
-    user: (_, { id }, { dataService }) =>
-      dataService.users.find(user => user.id === id),
+    user: (_, { id }, { dataService, mockAuth }) =>
+      mockAuth === id && dataService.users.find(user => user.id === id),
   },
   User: {
     __resolveReference: ({ id }, { dataService }) =>

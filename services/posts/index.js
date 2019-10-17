@@ -14,7 +14,14 @@ const server = new ApolloServer({
       resolvers,
     },
   ]),
-  context: { dataService: mockDataService },
+  context: ({ req }) => {
+    // client sends in a stateless JWT
+    const mockAuth = req.headers.authorization || ''
+    // verify user
+    console.log('mockAuth', mockAuth)
+    // add the user to the context
+    return { dataService: mockDataService, mockAuth }
+  },
 })
 
 server.listen({ port: PORT }).then(({ url }) => {
