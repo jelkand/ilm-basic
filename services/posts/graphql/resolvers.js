@@ -5,7 +5,7 @@ const resolvers = {
     user: post => ({ __typename: 'User', id: post.userId }),
   },
   User: {
-    posts: ({ id }, args, { dataService }) =>
+    posts: ({ id }, _, { dataService }) =>
       dataService.posts.filter(post => post.userId === id),
   },
 }

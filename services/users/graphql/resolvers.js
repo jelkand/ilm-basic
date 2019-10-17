@@ -1,6 +1,6 @@
 const resolvers = {
   Query: {
-    user: (parent, { id }, { dataService }) =>
+    user: (_, { id }, { dataService }) =>
       dataService.users.find(user => user.id === id),
   },
   User: {
